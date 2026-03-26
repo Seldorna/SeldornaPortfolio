@@ -86,13 +86,12 @@
   <p>© 2026 Seldorna Kullie</p>
 </footer>
 <script>
-const currentPage = window.location.pathname.split("/").pop(); 
+  const currentPage = window.location.pathname;
 document.querySelectorAll('.nav-links a').forEach(link => {
-  if(link.getAttribute("href") === currentPage) {
-    link.classList.add("active");
+  if(link.href.includes(currentPage)) {
+    link.classList.add('active');
   }
 });
-
 
 </script>
 </body>
