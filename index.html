@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Portfolio of Seldorna Kullie, WordPress Developer & Web Designer.">
+<meta property="og:title" content="Seldorna Kullie | Portfolio">
+<meta property="og:image" content="assets/Profile.jpg">
+<meta property="og:description" content="Clean, responsive websites using WordPress, Elementor, WooCommerce, and React.">
+  <title>Home | Seldorna Kullie</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header>
+  <nav class="navbar">
+    <h2 class="logo">Seldorna Saybah Kullie</h2>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="projects.html">Projects</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    
+    <div class="hero-text">
+      <h1>WordPress Developer & Web Designer</h1>
+      <p>
+        I build clean, responsive websites using WordPress, Elementor, WooCommerce, and React — focused on performance and user experience.
+      </p>
+      <div class="hero-buttons">
+        <a href="projects.html" class="btn">View Projects</a>
+        <a href="https://docs.google.com/document/d/1MyPZ4BGDSLxOGCfYkQNBKSBQ-RhAojNLN921EnjJlYo/export?format=pdf" 
+   class="btn-outline" target="_blank">
+   Download Resume
+</a>
+
+      </div>
+    </div>
+
+    <div class="hero-image">
+      <img src="assets/Profile.jpg" alt="Your Photo">
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+  <h2>About Me</h2>
+  <p>
+    I’m a software engineering student with experience building WordPress websites and eCommerce platforms. I enjoy creating fast, user-friendly websites and solving technical problems efficiently.
+  </p>
+
+  <div class="skills">
+    <span>WordPress</span>
+    <span>Elementor</span>
+    <span>WooCommerce</span>
+    <span>HTML</span>
+    <span>CSS</span>
+    <span>JavaScript</span>
+    <span>Node.js</span>
+    <span>Git</span>
+    <span>React</span>
+    <span>Postman</span>
+    <span>Firebase</span>
+    <span>MongoDB</span>
+    <span>More...</span>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact">
+  <h2>Contact</h2>
+  <p>Let’s work together or discuss opportunities.</p>
+
+  <div class="contact-container">
+    <!-- Contact Info Card -->
+ <div class="contact-card fade-in">
+  <h3>Get in Touch</h3>
+  <p><i class="fas fa-envelope"></i> 
+    <a href="mailto:seldornakullie@gmail.com">seldornakullie@gmail.com</a>
+  </p>
+  <p><i class="fas fa-phone"></i> +250791377054</p>
+  <p><i class="fab fa-github"></i> 
+    <a href="https://github.com/seldorna" target="_blank">seldorna</a>
+  </p>
+  <p><i class="fab fa-linkedin"></i> 
+    <a href="https://linkedin.com/in/seldorna" target="_blank">Seldorna Kullie</a>
+  </p>
+</div>
+
+    <!-- Contact Form Card -->
+    <div class="form-card">
+      <form id="contactForm" action="https://formspree.io/f/meepqkbw" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="_replyto" placeholder="Your Email" required>
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+      <div id="form-status"></div>
+
+    </div>
+  </div>
+</section>
+
+
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Seldorna Saybah Kullie</p>
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  // Fade-in animation
+  const faders = document.querySelectorAll('.fade-in');
+  const appearOptions = { threshold: 0.2, rootMargin: "0px 0px -50px 0px" };
+  const appearOnScroll = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    });
+  }, appearOptions);
+  faders.forEach(fader => appearOnScroll.observe(fader));
+
+  // Contact form submission
+  const form = document.getElementById("contactForm");
+  const status = document.getElementById("form-status");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    try {
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (response.ok) {
+        status.innerHTML = "✅ Thanks for your message! I'll get back to you soon.";
+        form.reset();
+      } else {
+        status.innerHTML = "❌ Oops! Something went wrong. Please try again.";
+      }
+    } catch (error) {
+      status.innerHTML = "⚠️ Network error. Please try again later.";
+    }
+  });
+});
+</script>
+
+</body>
+</html>
