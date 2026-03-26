@@ -20,13 +20,17 @@
 <!-- NAVBAR -->
 <header>
   <nav class="navbar">
-    <h2 class="logo">Seldorna Saybah Kullie</h2>
+    <div class="branding">
+      <img src="assets/seldornaLogo.png" alt="Site Logo">
+      <h2 class="logo">Seldorna Saybah Kullie</h2>
+    </div>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="projects.html">Projects</a></li>
     </ul>
   </nav>
 </header>
+
 
 <!-- HERO -->
 <section class="hero">
@@ -157,6 +161,13 @@ document.addEventListener("DOMContentLoaded", () => {
       status.innerHTML = "⚠️ Network error. Please try again later.";
     }
   });
+  const currentPage = window.location.pathname;
+document.querySelectorAll('.nav-links a').forEach(link => {
+  if(link.href.includes(currentPage)) {
+    link.classList.add('active');
+  }
+});
+
 });
 </script>
 
